@@ -61,7 +61,9 @@ for (unsigned int i = 0; i < test1.size(); i++)
 	
     if ((conectest == ';'))
 	{
-		
+		this->comarg.push_back(builder);
+		funct(comarg);
+		this->comarg.clear();	
 		this->intvec1.push_back(valoc);
 		//used to test code//std::cout << intvec1[this->intvec1.size()-1] << std::endl;
 		connector += ';';
@@ -70,6 +72,8 @@ for (unsigned int i = 0; i < test1.size(); i++)
 	}
 	else if((conectest == '&'))
 	{
+		this->comarg.push_back(builder);
+		funct(comarg);
 		this->intvec1.push_back(valoc);
 		//used to test code//std::cout << intvec1[this->intvec1.size()-1] << std::endl;
 		i++;
@@ -81,6 +85,8 @@ for (unsigned int i = 0; i < test1.size(); i++)
 	}
 	else if ((conectest == '|')) 
 	{
+		this->comarg.push_back(builder);
+		funct(comarg);
 		this->intvec1.push_back(valoc);
 		//used to test code//std::cout << intvec1[this->intvec1.size()-1] << std::endl;
 		i++;
@@ -109,7 +115,6 @@ for (unsigned int i = 0; i < test1.size(); i++)
 	}
 }
 this->comarg.push_back(builder);
-funct(comarg);
 }
 
 void userin::funct(vector<string> test1)
