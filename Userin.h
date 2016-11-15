@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 
 using namespace std;
@@ -65,7 +66,7 @@ for (unsigned int i = 0; i < test1.size(); i++)
 		funct(comarg);
 		this->comarg.clear();	
 		this->intvec1.push_back(valoc);
-		//used to test code//std::cout << intvec1[this->intvec1.size()-1] << std::endl;
+			//used to test code//std::cout << intvec1[this->intvec1.size()-1] << std::endl;
 		connector += ';';
 		this->con.push_back(connector);
 		connector.clear();
@@ -116,7 +117,6 @@ for (unsigned int i = 0; i < test1.size(); i++)
 		builder += conectest;
 	}
 }
-this->comarg.push_back(builder);
 }
 
 void userin::funct(vector<string> test1)
@@ -124,9 +124,7 @@ void userin::funct(vector<string> test1)
 	pid_t child_pid;
 	pid_t c;
 	int cstatus;
-	vector<string> test0 = test1;
-
-
+	
 	vector<char *> argv(test1.size() + 1);
 
 	for (size_t i = 0; i < test1.size(); i++)
@@ -135,25 +133,31 @@ void userin::funct(vector<string> test1)
 	}
 
 	child_pid = fork();
-	if (child_pid == 0)
-	{
-		execvp(argv[0], argv.data());
-		fprintf(stderr, "child process could not do execvp.\n");
-		_exit(1);
-	}
-
 
 	if (child_pid == -1)
 	{
 		fprintf(stderr, "Fork Falied.\n"); _exit(1);
 	}
+	
+	if (child_pid == 0)
+	{
+		execvp(argv[0], argv.data());
+		fprintf(stderr, "child process could not do execvp.\n");
+		_exit(1);
+		argv.clear();
+	}
 	else
 	{
-		c = wait(&cstatus);
+		 waitpid(child_pid, &cstatus, 0);
 		printf("Parent: child %ld exited with status = %d\n",
-			(long)c, cstatus);
+			(long)c,cstatus);
 	}
-	argv.clear();
+	kill(child_pid, SIGKILL);
+
+	
+	
+
+
 }
 
 
