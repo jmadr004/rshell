@@ -11,6 +11,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <cstring>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -37,6 +38,7 @@ public:
 	void print1();
 	void callfunct();
 	void funct(vector<string> test1);
+	void execute();
 };
 
 

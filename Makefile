@@ -1,8 +1,7 @@
-
 COMPILE = g++
 FLAGS =-Wall  -Werror  -ansi -pedantic
 
-OBJS = ./bin/Userin.o
+OBJS = ./bin/Userin.o 
 
 
 all: ./src/main.cpp $(OBJS)
@@ -11,6 +10,7 @@ all: ./src/main.cpp $(OBJS)
 ./bin/Userin.o: ./src/Userin.h ./src/Userin.cpp 
 	mkdir -p ./bin
 	$(COMPILE) $(FLAGS) -c ./src/Userin.cpp -o ./src/Userin.o
+
 
 clean:
 	rm -rf ./bin/

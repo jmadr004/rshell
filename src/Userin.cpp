@@ -204,3 +204,12 @@ void userin::callfunct()
 	}
 }
 
+
+void userin::execute()
+{
+	cout << "logout" << endl;
+	exit(0);
+
+}
+
+
