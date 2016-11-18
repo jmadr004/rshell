@@ -1,0 +1,3 @@
+echo "#exit" && #exit
+echo -e "git branch && exit && ls" && (git branch && exit && ls)
+exit
