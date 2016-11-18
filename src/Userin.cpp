@@ -1,16 +1,15 @@
 #include "Userin.h"
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
-void userin::parse() {
+bool userin::parse(string A) {
 	this->k = 0;
-	this->j = 0;		
+	this->j = 0;
 	this->valoc = 0;
 
-
-
-	for (unsigned int i = 0; i < test1.size(); i++)
+//old cleanup and begin parse
+	for (unsigned int i = 0; i < A.size(); i++)
 	{
-		conectest = test1[i];
+		conectest = A[i];
 		valoc = i;
 
 		if ((conectest == ';'))
@@ -59,6 +58,10 @@ void userin::parse() {
 	this->comarg.push_back(builder);
 	connector = ';';
 	this->con.push_back(connector);
+
+	bool retval =this->callfunct();
+	builder.clear();
+	return retval;
 }
 
 bool userin::funct(vector<string> test1)
@@ -98,9 +101,11 @@ bool userin::funct(vector<string> test1)
 	return Bstatus;
 
 }
-void userin::print1()
+
+
+void userin::printall(string A)
 {
-	std::cout << std::endl << "the string entered is: " << std::endl << this->test1 << std::endl;
+	std::cout << std::endl << "the string entered is: " << std::endl << A << std::endl;
 
 	std::cout << std::endl << "the command/argument string vector is as follow: " << std::endl;
 	for (unsigned int i = 0; i < this->comarg.size(); i++)
@@ -117,15 +122,14 @@ void userin::print1()
 	std::cout << std::endl;
 }
 
-
-
-void userin::callfunct()
+bool userin::callfunct()
 {
 	string loader;
 	string nextloader;
 	string nextnextloader;
 	char a;
 	bool booltest = true;
+	bool retbool = true;
 
 	for (unsigned int i = 0; i < this->comarg.size(); i++)
 	{
@@ -154,6 +158,7 @@ void userin::callfunct()
 				callf.push_back(loader);
 				//std::cout << loader << std::endl;
 				booltest = this->funct(callf);
+				retbool = booltest;
 				i++;
 				callf.clear();
 				if (booltest == true)
@@ -161,11 +166,15 @@ void userin::callfunct()
 					callf.push_back(nextloader);
 					//std::cout << nextloader << std::endl;
 					booltest = this->funct(callf);
+					if (booltest == true)
+					{
+						retbool = false;
+					}
 					callf.clear();
 					i++;
-
+					j++;
 				}
-
+				
 			}
 			if ((a == '|') && (booltest == false)) //call funct and pass first argument   !! IF !! it fails then pass second argument
 			{
@@ -190,14 +199,42 @@ void userin::callfunct()
 				}
 			}
 			if ((a == '|') && (booltest == true))
-			{
-				i++;
-				j++;
-			}
+				{
+					i++;
+					j++;
+				}
+		}
+	}
+
+	comarg.clear();
+	con.clear();
+	loader.clear();
+	nextloader.clear();
+
+	return retbool;
+}
+
+void userin::par1(vector<string> A)
+{
+	string loader;
+	string nextloader;
+	string nextnextloader;
+	char a;
+	bool parbool = true;
+	//cout << A[0] << endl << A[1] << endl;
+
+	//this->parse(A.at(0)); //execute first parentheses
+	//this->parse(A.at(1)); //execute second parentheses
+	
+	
+	for (unsigned int k = 0; k < A.size(); k++)
+	{
+		if (parbool == true)
+		{
+			parbool = this->parse(A.at(k));
 		}
 	}
 }
-
 
 void userin::execute()
 {
