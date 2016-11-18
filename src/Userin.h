@@ -37,7 +37,7 @@ public:
 	void parse();
 	void print1();
 	void callfunct();
-	void funct(vector<string> test1);
+	bool funct(vector<string> test1);
 	void execute();
 };
 
