@@ -17,8 +17,7 @@ using namespace std;
 
 class userin {
 protected:
-	string test1;
-	//string test1= " ";
+	//string test1;
 	std::vector <string > comarg;
 	std::vector <string> con;
 	std::vector <string> callf;
@@ -33,13 +32,13 @@ protected:
 public:
 	userin() {};
 	~userin() {};
-	void fill() { getline(cin, this->test1); }
-	void parse();
-	void print1();
-	void callfunct();
-	bool funct(vector<string> test1);
-	void execute();
-};
+	bool parse(string A);
+	void printall(string A);
+	bool callfunct();
+	//void funct(vector<string> test1);
+	void test1(string A);
+	void par1(vector<string> A);
+}
 
 
 #endif
