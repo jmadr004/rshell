@@ -1,1 +1,3 @@
-
+test -e /rshell && echo hello
+[ -d /rshell ] || ls -a;
+test -f /rshell/src/main && ls -l && [ /rshell ]
