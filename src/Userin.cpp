@@ -1,12 +1,13 @@
 #include "Userin.h"
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
+
 bool userin::parse(string A) {
 	this->k = 0;
 	this->j = 0;
 	this->valoc = 0;
 
-//old cleanup and begin parse
+	//old cleanup and begin parse
 	for (unsigned int i = 0; i < A.size(); i++)
 	{
 		conectest = A[i];
@@ -59,10 +60,11 @@ bool userin::parse(string A) {
 	connector = ';';
 	this->con.push_back(connector);
 
-	bool retval =this->callfunct();
+	bool retval = this->callfunct();
 	builder.clear();
 	return retval;
 }
+
 
 bool userin::funct(vector<string> test1)
 {
@@ -214,13 +216,42 @@ bool userin::callfunct()
 
 	return retbool;
 }
+void userin::functest0(string A)
+{
+	//variables used here
+	char m = ' ';
+	string whoa;
+	vector<string> B;
+	//end of variables used
+
+	for (unsigned int i = 0; i < A.size(); i++)
+	{
+		m = A[i];
+		if (m == '(')
+		{
+			i++;
+			m = A[i];
+			while (m != ')')
+			{
+				whoa += A[i];
+				i++;
+				m = A[i];
+			}
+			cout << whoa << endl;
+			B.push_back(whoa);
+			whoa.clear();
+		}
+	}
+	
+	cout << endl;
+	this->par1(B);
+}
 
 void userin::par1(vector<string> A)
 {
 	string loader;
 	string nextloader;
 	string nextnextloader;
-	char a;
 	bool parbool = true;
 	//cout << A[0] << endl << A[1] << endl;
 
@@ -244,30 +275,34 @@ void userin::execute()
 
 }
 
+
+
 //calltestfunc calls the test function after ensuring that there is a
 //left and right [] or a "test", if not found a cout statement is called with a test error returning a negative value
 int userin::calltestfunc(vector<string> tstring)
 {
-	string test1;
-	test1 = accumulate(tstring.begin(),tstring.end(), test1);
+	string Atest1;
+	Atest1 = accumulate(tstring.begin(),tstring.end(), Atest1);
 
 	string test2;
 	test2 = accumulate(tstring.begin(),tstring.end(), test2);
 
 	//takes in a vector<string> from the call funct command and checks for [] or test call
-	if ((test1.at(0) == '[') && test1.at(test1.size() - 1) == ']')
+	if ((Atest1.at(0) == '[') && Atest1.at(Atest1.size() - 1) == ']')
 	{
 		//The [] need to be removed to run the stat command this will remove the left and right []'s
-		test2 = test1.substr(1, test1.size() - 2);
+		test2 = Atest1.substr(1, Atest1.size() - 2);
 		//passing the now cleaned up test case to the test function
 		testfunc(test2);
+		return 0;
 	}
-	else if (test1.compare(0, 4, "test") == 0)//checks to see if not [] that a test value is passed
+	else if (Atest1.compare(0, 4, "test") == 0)//checks to see if not [] that a test value is passed
 	{
 		//removes the test value from the string which is not need for the stat function to run
-		test2 = test1.substr(5, test1.size() - 1);
+		test2 = Atest1.substr(5, Atest1.size() - 1);
 		//passes the cleaned vector<string> to testfunction
 		testfunc(test2);
+		return 0;
 	}
 	else
 	{
@@ -350,7 +385,5 @@ int userin::testfunc(string teststring)
 				return 1;
 			}
 		}
-
-
 };
 
