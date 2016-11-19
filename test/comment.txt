@@ -1,6 +1,11 @@
-echo test#hello world
-git status # gasgs
-false || true #Brian
-dir && echo #Crites
-ls -a #please work
-exit
+echo A #echo B
+echo A #&& echo B
+echo A && echo B #&& echo C
+echo A #; echo B
+echo A #|| echo B
+#echo A
+echo B #ls
+ls #-r
+pwd #cal
+cal #pwd
+
