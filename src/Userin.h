@@ -40,7 +40,7 @@ public:
 	bool callfunct();
 
 	bool funct(vector<string> test1);
-	void test1(string A);
+	void functest0(string A);
 	void par1(vector<string> A);
 	int testfunc(string teststring);
 	int calltestfunc(vector<string> teststring);
