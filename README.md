@@ -8,5 +8,5 @@ The purpose of this program is to further expand on the code created in assignme
 In order to execute multiple commands, we build a parse function that recursively run execvp on all commands entered. This was built by taking in a command line from the user and puts into a string. From there we call the first parse function which parses the command and adds all found commands into a vector of strings. This is done by checking postfix notation.
 
 #Known Bugs
-Currently we are still in the design phase and have not reached a point where the code is actually able to run.
+Currently there is an issue with the make file where in we are having an error when make is called.
 
