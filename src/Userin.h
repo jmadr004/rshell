@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include <numeric>
 
-
 using namespace std;
 
 class userin {
