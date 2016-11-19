@@ -1,1 +1,6 @@
-
+test /rshell/src
+test /rshell/src/main.cpp
+[ -e /rshell/src ]
+[ /rshell/src/]
+[ -d /rshell ]
+[ -f /rshell/src/main.cpp ]

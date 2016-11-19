@@ -39,6 +39,7 @@ public:
 	bool parse(string A);
 	void printall(string A);
 	bool callfunct();
+<<<<<<< HEAD
 	bool funct(vector<string> test1);
 	void test1(string A);
 	void par1(vector<string> A);
@@ -46,6 +47,12 @@ public:
 	int calltestfunc(vector<string> teststring);
 	void execute();
 };
+=======
+	//void funct(vector<string> test1);
+	void test1(string A);
+	void par1(vector<string> A);
+}
+>>>>>>> 337c2dde5d6a62d3bc1319905db8a913223d7808
 
 
 #endif

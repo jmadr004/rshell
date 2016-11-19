@@ -1,6 +1,6 @@
-ls -a ; ls
+ls -l ; ls
 echo a && echo b && echo c
-git log
+git status
 (false || echo f)
 echo asdf
 echo r ; exit
