@@ -77,6 +77,7 @@ bool userin::funct(vector<string> test1)
 		cstr,
 		NULL
 	};
+	
 	pid_t child_pid;
 	int cstatus;
 	child_pid = fork();
