@@ -7,18 +7,21 @@
 #include <string>
 #include <sstream>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <signal.h>
 #include <cstring>
 #include <stdlib.h>
+#include <numeric>
+
 
 using namespace std;
 
 class userin {
 protected:
-	string test1;
-	//string test1= " ";
+	//string test1;
 	std::vector <string > comarg;
 	std::vector <string> con;
 	std::vector <string> callf;
@@ -33,11 +36,14 @@ protected:
 public:
 	userin() {};
 	~userin() {};
-	void fill() { getline(cin, this->test1); }
-	void parse();
-	void print1();
-	void callfunct();
+	bool parse(string A);
+	void printall(string A);
+	bool callfunct();
 	bool funct(vector<string> test1);
+	void test1(string A);
+	void par1(vector<string> A);
+	int testfunc(string teststring);
+	int calltestfunc(vector<string> teststring);
 	void execute();
 };
 
