@@ -1,0 +1,6 @@
+cd /rshell/bin
+cd
+cd -
+cd /rshell/src
+cd -
+cd
